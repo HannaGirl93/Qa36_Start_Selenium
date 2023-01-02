@@ -22,11 +22,32 @@ public class Index {
     @Test
     public void itemsTests(){
         //find item1 and click == assert that div-alert contains message by "clicked by item 1"
+        wd.findElement(By.cssSelector("a[href='#item1']")).click();
+        String item1 = wd.findElement(By.cssSelector("div#alert")).getText();
+        Assert.assertTrue(item1.contains("Clicked by Item 1"));
+
         //find item3 and click == assert that div-alert contains message by "clicked by item 3"
+        wd.findElement(By.cssSelector("a[href='#item3']")).click();
+        String item3 = wd.findElement(By.cssSelector("div#alert")).getText();
+        Assert.assertTrue(item3.contains("Clicked by Item 3"));
     }
 
     @Test
     public void formTests(){
+        WebElement name = wd.findElement(By.cssSelector("input[name='name']"));
+        name.click();
+        name.clear();
+        name.sendKeys("Anna");
+        WebElement surename = wd.findElement(By.cssSelector("input[name='surename']"));
+        surename.click();
+        surename.clear();
+        surename.sendKeys("Kalashnikov");
+        WebElement btn = wd.findElement(By.cssSelector("button.btn"));
+        btn.click();
+
+        String alert = wd.findElement(By.cssSelector("div#alert")).getText();
+        Assert.assertTrue(alert.contains("Anna Kalashnikov"));
+
         //fill name & fill surname & click send
         //Assert that "div-alert" contains text with name + surname
     }
