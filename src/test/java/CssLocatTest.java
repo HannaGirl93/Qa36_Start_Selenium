@@ -11,7 +11,7 @@ public class CssLocatTest {
     WebDriver wd;
 
     @BeforeMethod
-    public void preCondition(){
+    public void preCondition() {
         //open browser
         //open site
         wd = new ChromeDriver();
@@ -19,7 +19,7 @@ public class CssLocatTest {
     }
 
     @Test
-    public void cssLocatorTest(){
+    public void CssLocator() {
 
         wd.findElement(By.linkText("LOGIN")).click();
 
@@ -34,5 +34,20 @@ public class CssLocatTest {
         wd.findElement(By.cssSelector(".active"));
 
         wd.findElement(By.cssSelector("#root"));//решеткой маркируется значение по id
+
+        wd.findElement(By.cssSelector("[href='/login']"));//по атрибуту
+        wd.findElement(By.cssSelector("[placeholder ^= 'Pass']"));//значение начинается с какого-то значения, тут Pass
+        wd.findElement(By.cssSelector("[placeholder *='ass']"));//значение содержит
+        wd.findElement(By.cssSelector("[placeholder $= 'ord']"));//значение заканчивается
+
+        wd.findElement(By.cssSelector("div#root.container"));//объединение
+        //wd.findElement(By.cssSelector("div[id=root][class='container']"));
+        wd.findElement(By.cssSelector("a[href='/login']"));
+        wd.findElement(By.cssSelector("input[name = 'email']"));
+
+        wd.findElement(By.cssSelector("button[name='login']"));
+
+
     }
+
 }
